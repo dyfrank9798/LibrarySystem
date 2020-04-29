@@ -2,6 +2,7 @@ package com.ly.ssm.controller;
 
 import com.ly.ssm.model.User;
 import com.ly.ssm.service.UserService;
+import com.ly.ssm.service.vo.UserVo;
 import com.ly.ssm.utils.Md5;
 import javafx.scene.control.RadioMenuItem;
 import org.apache.commons.io.FileUtils;
@@ -51,7 +52,10 @@ public class UserController {
         Md5 md = new Md5();
         String ps = md.MD5(password);
         HttpSession session = request.getSession();
-        User user=userService.checkLogin(username,ps);
+        UserVo userVo = new UserVo();
+        userVo.setUserName(username);
+        userVo.setUserPwd(password);
+        User user=userService.checkLogin(userVo);
         if(user!=null){
             session.setAttribute("user", user.getUserName());
             return true;

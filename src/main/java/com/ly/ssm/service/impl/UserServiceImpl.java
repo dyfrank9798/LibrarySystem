@@ -3,6 +3,7 @@ package com.ly.ssm.service.impl;
 import com.ly.ssm.dao.UserDao;
 import com.ly.ssm.model.User;
 import com.ly.ssm.service.UserService;
+import com.ly.ssm.service.vo.UserVo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,18 +42,23 @@ public class UserServiceImpl implements UserService {
 //        return userDao.selectAllUser();
 //    }
 
-    public User checkLogin(String userName, String userPwd) {
+    public User checkLogin(UserVo userVO) {
         //根据用户名实例化用户对象
-        User user = userDao.selectUser(userName);
-        if (user != null && user.getUserPwd().equals(userPwd)) {
+        User user = userDao.selectUser(userVO);
+        if (user != null && user.getUserPwd().equals(userVO.getUserPwd())) {
             return user;
         }
         return null;
     }
 
     public boolean checkRegister(String userName, String userPwd,String email) {
+
         //根据用户名实例化用户对象
-        User user = userDao.selectUser(userName);
+        UserVo userVo = new UserVo();
+        userVo.setUserName(userName);
+        userVo.setUserPwd(userPwd);
+        userVo.setUserEmail(email);
+        User user = userDao.selectUser(userVo);
         if(user!=null){
             return false;
         }

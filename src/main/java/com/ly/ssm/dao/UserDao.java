@@ -1,6 +1,7 @@
 package com.ly.ssm.dao;
 
 import com.ly.ssm.model.User;
+import com.ly.ssm.service.vo.UserVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,7 @@ public interface UserDao {
 
     void update(User user);
 
-    User selectUser(@Param("userName") String userName);
+    User selectUser(UserVo user);
 
     void updatePass(@Param("userPwd") String newPass,@Param("userName") String username);
 

@@ -1,6 +1,7 @@
 package com.ly.ssm.service;
 
 import com.ly.ssm.model.User;
+import com.ly.ssm.service.vo.UserVo;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface UserService {
 
     void update(User user);
 
-    User checkLogin(String userName, String userPwd);
+    User checkLogin(UserVo userVo);
 
     boolean checkRegister(String userName,String userPWd,String email);
 

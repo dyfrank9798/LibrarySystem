@@ -16,7 +16,7 @@
     </select>
 
 
-    <select id="selectUser" parameterType="com.ly.ssm.model.User" resultMap="UserBaseMap">
+    <select id="selectUser" parameterType="com.ly.ssm.service.vo.UserVo" resultMap="UserBaseMap">
         SELECT * FROM t_user WHERE user_name=#{userName}
     </select>
 
