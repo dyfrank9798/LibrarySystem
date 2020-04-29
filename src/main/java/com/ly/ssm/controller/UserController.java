@@ -54,7 +54,7 @@ public class UserController {
         HttpSession session = request.getSession();
         UserVo userVo = new UserVo();
         userVo.setUserName(username);
-        userVo.setUserPwd(password);
+        userVo.setUserPwd(ps);
         User user=userService.checkLogin(userVo);
         if(user!=null){
             session.setAttribute("user", user.getUserName());
